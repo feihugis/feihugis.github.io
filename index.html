@@ -943,7 +943,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://feihugis.github.io/2017/07/08/CS231n-Notes-1-2-Linear-Classification/">
+    <link itemprop="mainEntityOfPage" href="https://feihugis.github.io/2017/07/08/CS231n-Notes-1-1-Image-Classification/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://avatars1.githubusercontent.com/u/5057740?s=400&v=4">
@@ -957,7 +957,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2017/07/08/CS231n-Notes-1-2-Linear-Classification/" class="post-title-link" itemprop="url">CS231n_Notes_1.2: Linear Classification</a>
+            <a href="/2017/07/08/CS231n-Notes-1-1-Image-Classification/" class="post-title-link" itemprop="url">CS231n_Notes_1.1: Image Classification</a>
         </h2>
 
         <div class="post-meta">
@@ -990,11 +990,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="Interpreting-a-linear-classifier"><a href="#Interpreting-a-linear-classifier" class="headerlink" title="Interpreting a linear classifier"></a>Interpreting a linear classifier</h1><p>Notice that a linear classifier computes the score of a class as a weighted sum of all of its pixel values across all 3 of its color channels. Depending on precisely what values we set for these weights, the function has the capacity to like or dislike (depending on the sign of each weight) certain colors at certain positions in the image. For instance, you can imagine that the “ship” class might be more likely if there is a lot of blue on the sides of an image (which could likely correspond to water). You might expect that the “ship” classifier would then have a lot of positive weights across its blue channel weights (presence of blue increases score of ship), and negative weights in the red/green channels (presence of red/green decreases the score of ship).</p>
-<h1 id="Another-Interpretation-of-linear-classifiers-as-template-matching"><a href="#Another-Interpretation-of-linear-classifiers-as-template-matching" class="headerlink" title="Another Interpretation of linear classifiers as template matching"></a>Another Interpretation of linear classifiers as template matching</h1><p>Another interpretation for the weights WW is that each row of WW corresponds to a template (or sometimes also called a prototype) for one of the classes. The score of each class for an image is then obtained by comparing each template with the image using an inner product (or dot product) one by one to find the one that “fits” best. With this terminology, the linear classifier is doing template matching, where the templates are learned. Another way to think of it is that we are still effectively doing Nearest Neighbor, but instead of having thousands of training images we are only using a single image per class (although we will learn it, and it does not necessarily have to be one of the images in the training set), and we use the (negative) inner product as the distance instead of the L1 or L2 distance.</p>
+          <ul>
+<li><p><strong>Image Classification Problem</strong> is the task of assigning an input image one label from a fixed set of categories. Many other seemingly distinct <strong>Computer Vision</strong> tasks (such as ojbject detection, segmentation) can be reduced to image classification.  </p>
+</li>
+<li><p><strong>Challenges</strong></p>
+<ul>
+<li><em>Viewpoint variation</em>: A single instance of an object can be oriented in many ways with respect to the camera</li>
+<li><em>Scale variation</em>: Visual classes often exhibit variation in their size (size in the real world, not only in terms of their extent in the image)</li>
+<li><em>Deformation</em>: Many objects of interest are not rigid bodies and can be deformed in extreme ways.</li>
+<li><em>Occlusion</em>: The objects of interest can be occluded. Sometimes only a small portion of an object (as little as few pixels) could be visible.</li>
+<li><em>Illumination conditions</em>: The effects of illumination are drastic on the pixel level.</li>
+<li><em>Background clutter</em>: The objects of interest may blend into their environment, making them hard to identify.</li>
+<li><em>Intra-class variation</em>: The classes of interest can often be relatively broad, such as chair. There are many different types of these objects, each with their own appearance.  </li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2017/07/08/CS231n-Notes-1-2-Linear-Classification/#more" rel="contents">
+              <a class="btn" href="/2017/07/08/CS231n-Notes-1-1-Image-Classification/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
